@@ -1,70 +1,19 @@
 import React, { Component } from 'react';
+import Subject from "./components/Subject";
+import Nav from "./components/Nav";
+import Contents from "./components/Contents";
 import './App.css';
-
-//제목
-class Subject extends Component {
-  render() {
-    return (
-      <header>
-        <h1>Web</h1>
-      </header>
-    );
-  }
-}
-//상단탭
-class Nav extends Component {
-  render() {
-    return (
-      <nav>
-        <ul>
-          <li><a href="">1.Html</a></li>
-          <li><a href="">2.Css</a></li>
-          <li><a href="">3.Js</a></li>
-        </ul>
-      </nav>
-    );
-  }
-}
-//html
-class Html extends Component {
-  render() {
-    return (
-      <div>
-        <p>안녕하세요 Html에 관련된 내용입니다.</p>
-      </div>
-    );
-  }
-}
-//css
-class Css extends Component {
-  render() {
-    return (
-      <div>
-        <p>안녕하세요 Css에 관련된 내용입니다.</p>
-      </div>
-    );
-  }
-}
-//js
-class Js extends Component {
-  render() {
-    return (
-      <div>
-        <p>안녕하세요 Js에 관련된 내용입니다.</p>
-      </div>
-    );
-  }
-}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Subject></Subject>
+        <Subject title="Web" sub="Wolrd Wide Web!"></Subject>
+        <Subject title="React" sub="For UI"></Subject>
         <Nav></Nav>
-        <Html></Html>
-        <Css></Css>
-        <Js></Js>
+        <Contents title="Html" desc="Html 에 관한 내용입니다."></Contents>
+        <Contents title="Css" desc="Css에 관한 내용입니다"></Contents>
+        <Contents title="Js" desc="Js에 관한 내용입니다"></Contents>
       </div>
     )
   }
