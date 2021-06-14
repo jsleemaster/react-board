@@ -5,12 +5,23 @@ import Contents from "./components/Contents";
 import './App.css';
 
 class App extends Component {
+  //초기 state 설정
+  constructor(props) {
+    super(props);
+    this.state = {
+      subject: { title: 'Web', sub: 'Wolrd Wide Web!' },
+      contents: [
+        { id: 1, title: "Html", desc: 'Html is Information' },
+        { id: 2, title: "Css", desc: 'Css is amazing' },
+        { id: 3, title: "Javscript", desc: 'Javscript is Good' }
+      ]
+    }
+  }
   render() {
     return (
       <div className="App">
-        <Subject title="Web" sub="Wolrd Wide Web!"></Subject>
-        <Subject title="React" sub="For UI"></Subject>
-        <Nav></Nav>
+        <Subject title={this.state.subject.title} sub={this.state.subject.sub}></Subject>
+        <Nav data={this.state.contents}></Nav>
         <Contents title="Html" desc="Html 에 관한 내용입니다."></Contents>
         <Contents title="Css" desc="Css에 관한 내용입니다"></Contents>
         <Contents title="Js" desc="Js에 관한 내용입니다"></Contents>
