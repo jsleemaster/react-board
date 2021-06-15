@@ -9,7 +9,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mode: "welcome",
       subject: { title: 'Web', sub: 'Wolrd Wide Web!' },
+      welcome: { title: 'Welcome', desc: 'Hello React!' },
       contents: [
         { id: 1, title: "Html", desc: 'Html is Information' },
         { id: 2, title: "Css", desc: 'Css is amazing' },
@@ -18,13 +20,20 @@ class App extends Component {
     }
   }
   render() {
+    //state 값이 바뀌면 렌더함수가 재호출 된다.
+    var _title, _desc = null;
+    if (this.state.mode === 'welcome') {
+      _title = this.state.welcome.title;
+      _desc = this.state.welcome.desc;
+    } else if (this.state.mode === 'read') {
+      _title = this.state.contents[0].title;
+      _desc = this.state.contents[0].desc;
+    }
     return (
       <div className="App">
         <Subject title={this.state.subject.title} sub={this.state.subject.sub}></Subject>
         <Nav data={this.state.contents}></Nav>
-        <Contents title="Html" desc="Html 에 관한 내용입니다."></Contents>
-        <Contents title="Css" desc="Css에 관한 내용입니다"></Contents>
-        <Contents title="Js" desc="Js에 관한 내용입니다"></Contents>
+        <Contents title={_title} desc={_desc}></Contents>
       </div>
     )
   }
