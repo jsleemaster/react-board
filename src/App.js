@@ -39,7 +39,14 @@ class App extends Component {
           <h1><a href="/" onClick={function (e) {
             //a 태그의 본 기능을 막는 이벤트
             e.preventDefault();
-          }}>{this.state.subject.title}</a></h1>
+            // this.state.mode ="welcome"; 이렇게 하면 안된다 this값이 정의 되어있지 않기 때문에
+            //1.bind(this)로 함수에 this값을 지정해줌
+            //2. setState함수를 씀으로써 state값을 재지정 할 수 있음
+            this.setState({
+              mode: "read"
+            });
+
+          }.bind(this)}>{this.state.subject.title}</a></h1>
           <p>{this.state.subject.sub}</p>
         </header>
         <Nav data={this.state.contents}></Nav>
