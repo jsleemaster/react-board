@@ -31,7 +31,17 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Subject title={this.state.subject.title} sub={this.state.subject.sub}></Subject>
+        {/* <Subject 
+        title={this.state.subject.title} 
+        sub={this.state.subject.sub}>
+        </Subject> */}
+        <header>
+          <h1><a href="/" onClick={function (e) {
+            //a 태그의 본 기능을 막는 이벤트
+            e.preventDefault();
+          }}>{this.state.subject.title}</a></h1>
+          <p>{this.state.subject.sub}</p>
+        </header>
         <Nav data={this.state.contents}></Nav>
         <Contents title={_title} desc={_desc}></Contents>
       </div>
