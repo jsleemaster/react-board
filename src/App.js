@@ -10,6 +10,7 @@ class App extends Component {
   //초기 state 설정
   constructor(props) {
     super(props);
+    this.max_content_id = 3;
     this.state = {
       mode: "welcome",
       selected_id: 1,
@@ -40,7 +41,17 @@ class App extends Component {
         _article = <ReadContent title={_title} desc={_desc}></ReadContent>
       }
     } else if (this.state.mode === "create") {
-      _article = <CreateContent></CreateContent>
+      _article = <CreateContent onSubmit={function (_title, _desc) {
+        //add Create Content
+        // push는 직접적으로 데이터를 추가함
+        // concat은 간접적으로 데이터를 결합시킴 (퍼포먼스적으로 더 효율적)
+        var _contents = this.state.contents.concat(
+          { id: this.max_content_id + 1, title: _title, desc: _desc }
+        )
+        this.setState({
+          contents: _contents
+        })
+      }.bind(this)}></CreateContent>
     }
     return (
       <div className="App">
