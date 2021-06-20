@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//html
-class Html extends Component {
+//읽기 컨텐츠
+class ReadContent extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class Html extends Component {
         );
     }
 }
-export default Html;
+export default ReadContent;

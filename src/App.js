@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Subject from "./components/Subject";
+import Control from "./components/Control";
 import Nav from "./components/Nav";
-import Contents from "./components/Contents";
+import ReadContent from "./components/ReadContent";
+import CreateContent from "./components/CreateContent";
 import './App.css';
 
 class App extends Component {
@@ -22,10 +24,11 @@ class App extends Component {
   }
   render() {
     //state 값이 바뀌면 렌더함수가 재호출 된다.
-    var _title, _desc = null;
+    var _title, _desc, _article = null;
     if (this.state.mode === 'welcome') {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>
     } else if (this.state.mode === 'read') {
       var i;
       for (i = 0; i < this.state.contents.length; i++) {
@@ -34,8 +37,10 @@ class App extends Component {
           _title = data.title;
           _desc = data.desc;
         }
+        _article = <ReadContent title={_title} desc={_desc}></ReadContent>
       }
-
+    } else if (this.state.mode === "create") {
+      _article = <CreateContent></CreateContent>
     }
     return (
       <div className="App">
@@ -59,7 +64,16 @@ class App extends Component {
             });
           }.bind(this)}
         ></Nav>
-        <Contents title={_title} desc={_desc}></Contents>
+        <Control
+          onChangeMode={
+            function (_mode) {
+              this.setState({
+                mode: _mode
+              })
+            }.bind(this)
+          }
+        ></Control>
+        {_article}
       </div >
     )
   }
