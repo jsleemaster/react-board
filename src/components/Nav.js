@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 
 //상단탭
 class Nav extends Component {
+  //shouldComponentUpdate를 쓰는 이유
+  // 1.바뀐값이 있을 경우에만 render함수를 읽기 위해
+  // 2.push를 이용한다면 기존 데이터인 this.props.data 값도 변경이 됨
+  // 3.concat을 이용한다면 기존 데이터인 this.props.data 는 그대로고 newPros.data의 추가가 된다.
+  shouldComponentUpdate(newPros, newProps) {
 
+    //return false 인경우 render함수를 읽어오지 않는다.
+    if (this.props.data === newPros.data) {
+      return false;
+    }
+    return true;
+  }
   render() {
     var lists = [];
     let data = this.props.data;
