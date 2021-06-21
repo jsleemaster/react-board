@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //Update Content
-class CreateContent extends Component {
+class UpdateContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +10,7 @@ class CreateContent extends Component {
         this.inputFormHandler = this.inputFormHandler.bind(this);
     }
     inputFormHandler(e) {
-        this.setState = ({
+        this.setState({
             //자바스크립트 최신 문법
             [e.target.name]: e.target.value
         });
@@ -27,17 +27,17 @@ class CreateContent extends Component {
                     );
                 }.bind(this)}>
                     <input
+                        onChange={this.inputFormHandler}
                         type="text"
                         name="title"
                         placeholder='title'
                         value={this.state.title}
-                        onChange={this.inputFormHandler}
                     ></input>
                     <textarea
+                        onChange={this.inputFormHandler}
                         name="desc"
                         placeholder="desc"
                         value={this.state.desc}
-                        onChange={this.inputFormHandler}
                     ></textarea>
                     <input type="submit"></input>
                 </form>
@@ -45,4 +45,4 @@ class CreateContent extends Component {
         );
     }
 }
-export default CreateContent;
+export default UpdateContent;
