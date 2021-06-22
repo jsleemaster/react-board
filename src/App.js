@@ -53,21 +53,31 @@ class App extends Component {
         // 1. var result = Array.from(this.state.contents) 를 이용해 result에 push하면 된다.
         // 2. var result = Object.assign({id :~ , title : ~ , desc : ~},this.state.contents)를 이용해도 된다
         // concat은 간접적으로 데이터를 결합시킴 (퍼포먼스적으로 더 효율적 , 원본을 변경하지 않음 그래서 값을 저장해야함)
+        this.max_content_id = this.max_content_id + 1;
         var _contents = this.state.contents.concat(
-          { id: this.max_content_id + 1, title: _title, desc: _desc }
+          { id: this.max_content_id, title: _title, desc: _desc }
         )
         this.setState({
-          contents: _contents
+          contents: _contents,
+          mode: "read",
+          selected_id: this.max_content_id
         })
       }.bind(this)}></CreateContent>
     } else if (this.state.mode === 'update') {
-      _article = <UpdateContent data={this.getReadContent()} onSubmit={function (_title, _desc) {
+      _article = <UpdateContent data={this.getReadContent()} onSubmit={function (_id, _title, _desc) {
         //updateContent
-        var _contents = this.state.contents.concat(
-          { id: this.max_content_id + 1, title: _title, desc: _desc }
-        )
+        var _contents = Array.from(this.state.contents);
+        var i = 0;
+        while (i < _contents.length) {
+          if (_contents[i].id === _id) {
+            _contents[i] = { id: _id, title: _title, desc: _desc }
+            break;
+          }
+          i = i + 1;
+        }
         this.setState({
-          contents: _contents
+          contents: _contents,
+          mode: "read"
         })
       }.bind(this)}></UpdateContent>
     }
@@ -99,9 +109,28 @@ class App extends Component {
         <Control
           onChangeMode={
             function (_mode) {
-              this.setState({
-                mode: _mode
-              })
+              if (_mode === "delete") {
+                if (window.confirm('삭제하시겠습니까?')) {
+                  var _contents = Array.from(this.state.contents);
+                  var i = 0;
+                  while (i < _contents.length) {
+                    if (_contents[i].id === this.state.selected_id) {
+                      _contents.splice(i, 1);
+                      break;
+                    }
+                    i = i + 1;
+                  }
+                  this.setState({
+                    mode: 'welcome',
+                    contents: _contents
+                  });
+                  alert('delete');
+                }
+              } else {
+                this.setState({
+                  mode: _mode
+                })
+              }
             }.bind(this)
           }
         ></Control>
