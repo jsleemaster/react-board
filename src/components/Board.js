@@ -63,6 +63,7 @@ class Board extends React.Component {
         )
     }
 }
+//우승자 정하기
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
