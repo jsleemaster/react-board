@@ -4,18 +4,21 @@ class Control extends Component {
     render() {
         return (
             <ul>
-                <li><a href="" onClick={function (e) {
-                    e.preventDefault();
-                    this.props.onChangeMode('create');
-                }.bind(this)}>Create</a></li>
-                <li><a href="" onClick={function (e) {
-                    e.preventDefault();
-                    this.props.onChangeMode('update');
-                }.bind(this)}>Update</a></li>
-                <li><input onClick={function (e) {
-                    e.preventDefault();
-                    this.props.onChangeMode('delete');
-                }.bind(this)} type="button" value="Delete"></input></li>
+                <li><a href="" onClick={
+                    (e) => {
+                        e.preventDefault();
+                        this.props.onChangeMode('create');
+                    }}>Create</a></li>
+                <li><a href="" onClick={
+                    (e) => {
+                        e.preventDefault();
+                        this.props.onChangeMode('update');
+                    }}>Update</a></li>
+                <li><input onClick={
+                    (e) => {
+                        e.preventDefault();
+                        this.props.onChangeMode('delete');
+                    }} type="button" value="Delete"></input></li>
             </ul>
         );
     }

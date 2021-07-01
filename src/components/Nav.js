@@ -6,7 +6,7 @@ class Nav extends Component {
   // 1.바뀐값이 있을 경우에만 render함수를 읽기 위해
   // 2.push를 이용한다면 기존 데이터인 this.props.data 값도 변경이 됨
   // 3.concat을 이용한다면 기존 데이터인 this.props.data 는 그대로고 newPros.data의 추가가 된다.
-  shouldComponentUpdate(newPros, newProps) {
+  shouldComponentUpdate(newPros) {
 
     //return false 인경우 render함수를 읽어오지 않는다.
     if (this.props.data === newPros.data) {
@@ -26,12 +26,13 @@ class Nav extends Component {
             //인자를 넘기는 방법 두가지
             //1.속성을 부여해서 인자를 넘기는 방법
             data-id={data[i].id}
-            onClick={function (e) {
-              e.preventDefault();
-              //target은 갖고 있는 속성들을 확인 할 수 있다
-              //target.dataset 에 data-가 갖고 있는 ex)id를 확인할 수 있다.
-              this.props.onChangePage(e.target.dataset.id);
-            }.bind(this)}
+            onClick={
+              (e) => {
+                e.preventDefault();
+                //target은 갖고 있는 속성들을 확인 할 수 있다
+                //target.dataset 에 data-가 갖고 있는 ex)id를 확인할 수 있다.
+                this.props.onChangePage(e.target.dataset.id);
+              }}
           //2. bind에 추가해서 넘기는 방법
 
           // onClick={function (id, ex, e) {
