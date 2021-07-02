@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import ReadContent from "./components/ReadContent";
 import CreateContent from "./components/CreateContent";
 import UpdateContent from "./components/UpdateContent";
+import GuGudan from "./components/GuGudan";
 import Board from "./components/Board";
 import './App.css';
 
@@ -12,7 +13,7 @@ class App extends Component {
   //초기 state 설정
   constructor(props) {
     super(props);
-    this.max_content_id = 4;
+    this.max_content_id = 5;
     this.state = {
       mode: "welcome",
       selected_id: 1,
@@ -22,7 +23,8 @@ class App extends Component {
         { id: 1, title: "Html", desc: 'Html is Information' },
         { id: 2, title: "Css", desc: 'Css is amazing' },
         { id: 3, title: "Javscript", desc: 'Javscript is Good' },
-        { id: 4, title: "tictok", desc: "game!" }
+        { id: 4, title: "tictok", desc: "game!" },
+        { id: 5, title: "Gugudan", desc: "play gugudan" }
       ],
     }
   }
@@ -46,7 +48,11 @@ class App extends Component {
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>
     } else if (this.state.mode === 'read') {
       var _content = this.getReadContent();
-      _article = <ReadContent title={_content.title} desc={_content.desc}></ReadContent>
+      if (_content.title == "Gugudan") {
+        _article = <GuGudan></GuGudan>
+      } else {
+        _article = <ReadContent title={_content.title} desc={_content.desc}></ReadContent>
+      }
     } else if (this.state.mode === "create") {
       _article = <CreateContent onSubmit={function (_title, _desc) {
         //add Create Content
