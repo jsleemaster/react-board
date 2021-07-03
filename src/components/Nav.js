@@ -20,7 +20,7 @@ class Nav extends Component {
     let i = 0;
     while (i < data.length) {
       lists.push(
-        <li key={data[i].id}>
+        <li key={data[i].id} className="listTab">
           <a
             href={'/contents/' + data[i].id}
             //인자를 넘기는 방법 두가지

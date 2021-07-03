@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Square from './Square';
 //게임 컨텐츠
-class Board extends React.Component {
+class Board extends Component {
     // constructor(props) {
     //     super(props);
     //     this.state = {
@@ -9,7 +9,6 @@ class Board extends React.Component {
     //         xIsNext: true
     //     }
     // }
-
     renderSquare(i) {
         return (
             <Square
@@ -76,7 +75,7 @@ class Board extends React.Component {
 }
 
 //Game 컴포넌트
-class Game extends React.Component {
+class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {

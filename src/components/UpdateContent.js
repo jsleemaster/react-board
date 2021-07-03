@@ -20,14 +20,15 @@ class UpdateContent extends Component {
         return (
             <div>
                 <h1>Update</h1>
-                <form action="" method="post" onSubmit={function (e) {
-                    e.preventDefault();
-                    this.props.onSubmit(
-                        this.state.id,
-                        this.state.title,
-                        this.state.desc
-                    );
-                }.bind(this)}>
+                <form action="" method="post" onSubmit={
+                    (e) => {
+                        e.preventDefault();
+                        this.props.onSubmit(
+                            this.state.id,
+                            this.state.title,
+                            this.state.desc
+                        );
+                    }}>
                     <input type="hidden" name="id" value={this.state.id}></input>
                     <input
                         onChange={this.inputFormHandler}

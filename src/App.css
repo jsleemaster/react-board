@@ -1,8 +1,11 @@
 .board-row button{
     width: 30px;
     height: 30px;
-}
+}   
 .board {
     width: 300px;
     height: auto;
+}
+.listTab {
+    list-style: none;
 }

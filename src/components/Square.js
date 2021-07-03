@@ -18,6 +18,7 @@ function Square(props) {
     return (
         <button
             className="square"
+            //함수형으로 변환해서 this, ()=>, () 가사라짐
             onClick={props.onClick}
         >
             {props.value}
