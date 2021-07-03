@@ -15,7 +15,7 @@ class Gugudan extends Component {
         e.preventDefault();
         if (parseInt(this.state.value) === this.state.first * this.state.seconde) {
             this.setState({
-                result: "답 : " + number + " 정답!",
+                result: "답 : " + number + "정답!",
                 first: Math.ceil(Math.random() * 9),
                 seconde: Math.ceil(Math.random() * 9),
                 value: ''
