@@ -15,14 +15,14 @@ class App extends Component {
   state = {
     mode: "welcome",
     selected_id: 1,
-    subject: { title: 'Web', sub: 'Wolrd Wide Web!' },
+    subject: { title: '리액트 연습 게시판', sub: '반갑습니다!' },
     welcome: { title: 'Welcome', desc: 'Hello React!' },
     contents: [
       { id: 1, title: "Html", desc: 'Html is Information' },
       { id: 2, title: "Css", desc: 'Css is amazing' },
       { id: 3, title: "Javascript", desc: 'Javscript is Good' },
       { id: 4, title: "TicTok", desc: "game!" },
-      { id: 5, title: "Gugudan", desc: "play gugudan" }
+      { id: 5, title: "구구단", desc: "play gugudan" }
     ],
   }
 
@@ -45,7 +45,7 @@ class App extends Component {
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>
     } else if (this.state.mode === 'read') {
       var _content = this.getReadContent();
-      if (_content.title == "Gugudan") {
+      if (_content.title == "구구단") {
         _article = <GuGuDan></GuGuDan>
       } else if (_content.title == "TicTok") {
         _article = <Board></Board>
