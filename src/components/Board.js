@@ -76,16 +76,13 @@ class Board extends Component {
 
 //Game 컴포넌트
 class Game extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            history: [{
-                squares: Array(9).fill(null),
-            }],
-            stepNumber: 0,
-            xIsNext: true,
-        };
-    }
+    state = {
+        history: [{
+            squares: Array(9).fill(null),
+        }],
+        stepNumber: 0,
+        xIsNext: true,
+    };
     handleClick(i) {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         // const squares = this.state.squares.slice();
@@ -96,13 +93,15 @@ class Game extends Component {
             return;
         }
         squares[i] = this.state.xIsNext ? "X" : "O";
-        this.setState({
-            history: history.concat([{
-                squares: squares,
-            }]),
-            stepNumber: history.length,
-            // squares: squares,
-            xIsNext: !this.state.xIsNext,
+        this.setState((prevState) => {
+            return {
+                history: history.concat([{
+                    squares: squares,
+                }]),
+                stepNumber: history.length,
+                // squares: squares,
+                xIsNext: !prevState.xIsNext,
+            }
         });
     }
     jumpTo(step) {

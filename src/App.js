@@ -11,22 +11,19 @@ import './App.css';
 
 class App extends Component {
   //초기 state 설정
-  constructor(props) {
-    super(props);
-    this.max_content_id = 5;
-    this.state = {
-      mode: "welcome",
-      selected_id: 1,
-      subject: { title: 'Web', sub: 'Wolrd Wide Web!' },
-      welcome: { title: 'Welcome', desc: 'Hello React!' },
-      contents: [
-        { id: 1, title: "Html", desc: 'Html is Information' },
-        { id: 2, title: "Css", desc: 'Css is amazing' },
-        { id: 3, title: "Javascript", desc: 'Javscript is Good' },
-        { id: 4, title: "TicTok", desc: "game!" },
-        { id: 5, title: "Gugudan", desc: "play gugudan" }
-      ],
-    }
+  max_content_id = 5;
+  state = {
+    mode: "welcome",
+    selected_id: 1,
+    subject: { title: 'Web', sub: 'Wolrd Wide Web!' },
+    welcome: { title: 'Welcome', desc: 'Hello React!' },
+    contents: [
+      { id: 1, title: "Html", desc: 'Html is Information' },
+      { id: 2, title: "Css", desc: 'Css is amazing' },
+      { id: 3, title: "Javascript", desc: 'Javscript is Good' },
+      { id: 4, title: "TicTok", desc: "game!" },
+      { id: 5, title: "Gugudan", desc: "play gugudan" }
+    ],
   }
 
   getReadContent() {
@@ -69,10 +66,12 @@ class App extends Component {
           var _contents = this.state.contents.concat(
             { id: this.max_content_id, title: _title, desc: _desc }
           )
-          this.setState({
-            contents: _contents,
-            mode: "read",
-            selected_id: this.max_content_id
+          this.setState(() => {
+            return {
+              contents: _contents,
+              mode: "read",
+              selected_id: this.max_content_id
+            }
           })
         }}></CreateContent>
     } else if (this.state.mode === 'update') {
@@ -149,7 +148,6 @@ class App extends Component {
             }
           }
         ></Control>
-
         {this.getContent()}
       </div >
     )
