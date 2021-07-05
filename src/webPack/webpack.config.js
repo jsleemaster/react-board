@@ -1,13 +1,15 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     name: 'wordreply-setting',
-    mode: 'development',
-    devtool: 'eval',
+    mode: 'development', // 개발 development, 서비스시 production
+    devtool: 'eval', //개발일땐 eval, 서비스 시 hidden-source-map
     //entry에 파일마다 확장자를 안적고 resolve에 적으면 됨
     resolve: {
         extensions: ['.js', '.jsx', '.json']
     },
+    //entry 에 모듈 적용, 플러그인 까지 적용, 아웃풋으로 출력
     entry: {
         app: ['./client'],
     },//입력
@@ -16,12 +18,27 @@ module.exports = {
         rules: [{
             test: /\.jsx?/,
             loader: 'babel-loader',
+            //바벨에 대한 설정
             options: {
-                presets: ['@babel/preset-env', '@babel/preset-react'],
+                presets: [
+                    //옛날 브라우저들을 지원해주기 위한 설정
+                    ['@babel/preset-env', {
+                        target: {
+                            //한국에서 5프로 점유율이 넘으면 자원해줘! 라는 설정
+                            browser: ['> 5% in KR'], // browserlist 
+                        },
+                        debug: true,
+                    }],
+                    '@babel/preset-react'],
+                //플러그인들의 모임 = preset-env
                 plugins: ['@babel/plugin-proposal-class-properties'],
             }
         }],
     },
+    //확장프로그램
+    plugins: [
+        new webpack.LoaderOptionsPlugin({ debug: true }),
+    ],
     output: {
         path: path.join(__dirname, 'dist'), //dirname : 현재폴더 안에 ,'위치'
         filename: 'app.js',
