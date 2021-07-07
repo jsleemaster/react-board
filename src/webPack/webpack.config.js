@@ -1,5 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
+const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
     name: 'wordreply-setting',
@@ -11,7 +12,7 @@ module.exports = {
     },
     //entry 에 모듈 적용, 플러그인 까지 적용, 아웃풋으로 출력
     entry: {
-        app: ['./client'],
+        app: ['./Client'],
     },//입력
     module: {
         //여러개의 규칙들
@@ -21,26 +22,36 @@ module.exports = {
             //바벨에 대한 설정
             options: {
                 presets: [
+                    '@babel/preset-env',
                     //옛날 브라우저들을 지원해주기 위한 설정
-                    ['@babel/preset-env', {
-                        target: {
-                            //한국에서 5프로 점유율이 넘으면 자원해줘! 라는 설정
-                            browser: ['> 5% in KR'], // browserlist 
-                        },
-                        debug: true,
-                    }],
+                    // ['@babel/preset-env', {
+                    //     target: {
+                    //         //한국에서 5프로 점유율이 넘으면 자원해줘! 라는 설정
+                    //         browser: ['> 5% in KR'], // browserlist 
+                    //     },
+                    //     debug: true,
+                    // }],
                     '@babel/preset-react'],
                 //플러그인들의 모임 = preset-env
-                plugins: ['@babel/plugin-proposal-class-properties'],
+                plugins: ['@babel/plugin-proposal-class-properties',
+                    'react-refresh/babel']
             }
         }],
     },
     //확장프로그램
     plugins: [
         new webpack.LoaderOptionsPlugin({ debug: true }),
+        new RefreshWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
     output: {
         path: path.join(__dirname, 'dist'), //dirname : 현재폴더 안에 ,'위치'
         filename: 'app.js',
+        publicPath: '/dist/',
     },//출력
-};
+    devServer: {
+        publicPath: '/dist/',
+        //기존데이터를 유지여부
+        hot: true,
+    }
+}
