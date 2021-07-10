@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-
+//이곳은 import를 쓰면 오류가난다.
 module.exports = {
     name: 'wordreply-setting',
     mode: 'development', // 개발 development, 서비스시 production
@@ -50,7 +50,7 @@ module.exports = {
         publicPath: '/dist/',
     },//출력
     devServer: {
-        publicPath: '/dist/',
+        publicPath: '/dist/', // app.use('/dist', express.static(__dirname, 'dist'))
         //기존데이터를 유지여부
         hot: true,
     }
