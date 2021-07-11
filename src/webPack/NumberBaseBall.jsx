@@ -27,8 +27,8 @@ class NumberBaseBall extends Component {
             <div>
                 <ul>
                     {/* 맵함수 이용 */}
-                {{title: 'hi',taste :'hello'}.map((e)=> {
-                    <li>{e.title} : {e.taste}</li>
+                {{title: 'hi',taste :'hello'}.map((e,i)=> {
+                    <li><b>{e.title}</b> : {e.taste} 인덱스 값 : {i}</li>
                 })}
                 </ul>
             </div>
