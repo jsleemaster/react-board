@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Try from './Try';
 //야구게임
 class NumberBaseBall extends Component {
     state = {
@@ -16,6 +17,14 @@ class NumberBaseBall extends Component {
     onRef = (e) => {
         this.input = e;
     }
+    fruits = [
+        {key : 1, title: '사과',taste :'달다'},
+        {key : 2, title: '배',taste :'달다'},
+        {key : 3, title: '감',taste :'떫다'},
+        {key : 4, title: '귤',taste :'달다'},
+        {key : 5, title: '밤',taste :'텁텁하다'},
+        {key : 6, title: '체리',taste :'시큼하다'},
+    ]
     render(){
         return(
             <>
@@ -27,8 +36,9 @@ class NumberBaseBall extends Component {
             <div>
                 <ul>
                     {/* 맵함수 이용 */}
-                {{title: 'hi',taste :'hello'}.map((e,i)=> {
-                    <li><b>{e.title}</b> : {e.taste} 인덱스 값 : {i}</li>
+                {this.fruits.map((e,i)=> {
+                    //컴포넌트화
+                    <Try key={e.key} value={e} index={i}/>
                 })}
                 </ul>
             </div>
