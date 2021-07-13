@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import Try from './Try';
+function getNumbers(){
+    const candidate = [1,2,3,4,5,6,7,8,9];
+    const array = [];
+    for (let i=0; i<4; i++ ) {
+        const chosen = candidate.slice(Math.floor(Math.random()* (9-i)),1)[0];
+        array.push(chosen);
+    }
+    return array;
+}
 //야구게임
 class NumberBaseBall extends Component {
     state = {
         result : '',
-        value : ''
+        value : '',
+        answer: getNumbers(),
+        tries:[],// push쓰면 안됨
     }
     onSubmitForm = (e) => {
         e.preventDefault();
-    }
-    onChangeInput = () => {
+        if (this.state.value === this.state.answer.join('')){
+            this.setState({
+                result : '홈런',
+                tries : [...this.state.tries, {try : this.state.value, result: '홈런!'}] // 딥 카피 후 새로운 값 넣기
+            })
+        } else{
 
+        }
+    }
+    onChangeInput = (e) => {
+        e.preventDefault();
+        this.setState({
+            value : e.target.value,
+        })
     }
 
     input;
