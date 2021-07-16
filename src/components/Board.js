@@ -84,7 +84,7 @@ class Game extends Component {
         xIsNext: true,
     };
     handleClick(i) {
-        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+        const history = history.slice(0, this.state.stepNumber + 1);
         // const squares = this.state.squares.slice();
         // const history = this.state.history;
         const current = history[history.length - 1];
