@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+// process.env.NODE_ENV = 'production'; //배포모드로 변경시 꼭 넣어야함
+
 //이곳은 import를 쓰면 오류가난다.
 module.exports = {
     name: 'wordreply-setting',
