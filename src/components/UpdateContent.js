@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+//PureComponet === shouldcomponetupdate 를 구현 해놓은 것
+//PureComponet 는 object, array 등 참조변수들이 변하는 것은 구분을 잘 못함. (단점)
+//PureComponet deepCopy를 하면 구분은 함
 //Update Content
-class UpdateContent extends Component {
+class UpdateContent extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
