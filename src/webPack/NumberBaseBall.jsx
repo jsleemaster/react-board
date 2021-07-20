@@ -17,7 +17,6 @@ const NumberBaseBall = () => {
     const {value, setValue} = useState('');
     const {answer, setAnswer} = useState(getNumbers());
     const {tries, setTries} = useState([]);
-
     const onSubmitForm = (e) => {
         //구조분해 할당
         // const {answer, value, tries} = this.state;
@@ -114,27 +113,27 @@ const NumberBaseBall = () => {
             })}
             </ul>
         </div>
-        </h12>
+        </>
     );
-    state = {
-        result : '',
-        value : '',
-        answer: getNumbers(),
-        tries:[],// push쓰면 안됨
-    }
+    // state = {
+    //     result : '',
+    //     value : '',
+    //     answer: getNumbers(),
+    //     tries:[],// push쓰면 안됨
+    // }
     
-    fruits = [
-        {key : 1, title: '사과',taste :'달다'},
-        {key : 2, title: '배',taste :'달다'},
-        {key : 3, title: '감',taste :'떫다'},
-        {key : 4, title: '귤',taste :'달다'},
-        {key : 5, title: '밤',taste :'텁텁하다'},
-        {key : 6, title: '체리',taste :'시큼하다'},
-    ]
-    render(){
-    const {tries, value} = this.state
+    // fruits = [
+    //     {key : 1, title: '사과',taste :'달다'},
+    //     {key : 2, title: '배',taste :'달다'},
+    //     {key : 3, title: '감',taste :'떫다'},
+    //     {key : 4, title: '귤',taste :'달다'},
+    //     {key : 5, title: '밤',taste :'텁텁하다'},
+    //     {key : 6, title: '체리',taste :'시큼하다'},
+    // ]
+    // render(){
+    // const {tries, value} = this.state
         
-    }
+    // }
 }
 
 export default NumberBaseBall;
