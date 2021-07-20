@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react';
+import React, { Component, useState, memo} from 'react';
 import Try from './Try';
 //바깥에 뺀 이유는 NumberBaseball 컴포넌트에 this.로 사용되지 않으면 빼는게 좋음
 //추후에 다른 곳에서도 사용할 수 있기때문에
@@ -12,7 +12,8 @@ function getNumbers(){
     return array;
 }
 //야구게임
-const NumberBaseBall = () => {
+//자식들이 purecomponet나 shouldcomponet 부모도 똑같이 만들어 줘야함=> 함수형이기 떄문에 memo를 이용
+const NumberBaseBall = memo(() => {
     const {result, setResult} = useState('');
     const {value, setValue} = useState('');
     const {answer, setAnswer} = useState(getNumbers());
@@ -134,6 +135,6 @@ const NumberBaseBall = () => {
     // const {tries, value} = this.state
         
     // }
-}
+});
 
 export default NumberBaseBall;
