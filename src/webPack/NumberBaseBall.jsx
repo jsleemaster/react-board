@@ -1,4 +1,6 @@
-import React, { Component, useState, memo} from 'react';
+import React, { Component, useState, memo, createRef} from 'react';
+//class 에서는 createRef를 이용하여 ref를 정해줄 수 있다
+
 import { useRef } from 'react/cjs/react.production.min';
 import Try from './Try';
 //바깥에 뺀 이유는 NumberBaseball 컴포넌트에 this.로 사용되지 않으면 빼는게 좋음
@@ -86,6 +88,10 @@ const NumberBaseBall = memo(() => {
             }
         }
         onRef.current.focus();
+        //class
+        //this.onRef.current.focus() ; << import createRef를 한 경우
+        //this.onRef.focus() ; << import createRef를 안 한경우
+
     }
     const onChangeInput = (e) => {
         e.preventDefault();
@@ -94,7 +100,8 @@ const NumberBaseBall = memo(() => {
         //     value : e.target.value,
         // })
     }
-
+    // createRef를 사용할 경우
+    // onRef = createRef(); 를 사용하면 된다.
     // input;
     // const onRef = (e) => {
     //     this.input = e;
@@ -104,7 +111,7 @@ const NumberBaseBall = memo(() => {
         <div>야구게임</div>
         <h1>{result}</h1>
         <form onSubmit={onSubmitForm}>
-            <input maxLength="4" onRef={onRef} value={value} onChange={onChangeInput}/>
+            <input maxLength="4" ref={onRef} value={value} onChange={onChangeInput}/>
             <button>입력</button>
         </form>
         <div> 시도 {tries.length}</div>
