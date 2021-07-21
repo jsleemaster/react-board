@@ -1,4 +1,5 @@
 import React, { Component, useState, memo} from 'react';
+import { useRef } from 'react/cjs/react.production.min';
 import Try from './Try';
 //바깥에 뺀 이유는 NumberBaseball 컴포넌트에 this.로 사용되지 않으면 빼는게 좋음
 //추후에 다른 곳에서도 사용할 수 있기때문에
@@ -18,6 +19,7 @@ const NumberBaseBall = memo(() => {
     const {value, setValue} = useState('');
     const {answer, setAnswer} = useState(getNumbers());
     const {tries, setTries} = useState([]);
+    const onRef = useRef(null);
     const onSubmitForm = (e) => {
         //구조분해 할당
         // const {answer, value, tries} = this.state;
@@ -83,6 +85,7 @@ const NumberBaseBall = memo(() => {
                 // });
             }
         }
+        onRef.current.focus();
     }
     const onChangeInput = (e) => {
         e.preventDefault();
@@ -92,10 +95,10 @@ const NumberBaseBall = memo(() => {
         // })
     }
 
-    input;
-    const onRef = (e) => {
-        this.input = e;
-    }
+    // input;
+    // const onRef = (e) => {
+    //     this.input = e;
+    // }
     return(
         <>
         <div>야구게임</div>
