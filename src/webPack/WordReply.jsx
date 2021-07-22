@@ -69,6 +69,7 @@ const WordReply = () => {
 //         this.input =c;
 
 //     }
+// 렌더 안에서는 setState를 쓰면 안된다. 브라우저의 성능을 하락시킴 
 //     render() {
 //         return (
 //         <>
