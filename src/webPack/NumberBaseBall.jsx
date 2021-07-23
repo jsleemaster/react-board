@@ -114,7 +114,7 @@ const NumberBaseBall = memo(() => {
             <input maxLength="4" ref={onRef} value={value} onChange={onChangeInput}/>
             <button>입력</button>
         </form>
-        <div> 시도 {tries.length}</div>
+        <div> 시도 횟수 {tries.length}</div>
         <div>
             <ul>
                 {/* 맵함수 이용 */}
