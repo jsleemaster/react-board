@@ -117,7 +117,7 @@ const NumberBaseBall = memo(() => {
         <div> 시도 횟수 {tries.length}</div>
         <div>
             <ul>
-                {/* 맵함수 이용 */}
+                {/* 맵함수 이용 react에서는 맵 함수로 반복문을 이용하는게 특징 */}
             {tries.map((e,i)=> {
                 //컴포넌트화
                 <Try key={`${i+1}차 시도 : `} tryInfo={e}/>
