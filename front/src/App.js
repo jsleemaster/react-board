@@ -11,7 +11,7 @@ const Title = styled.h1`
 function App() {
   return (
     <Wrapper>
-      <Title></Title>
+      <Title>hi</Title>
     </Wrapper>
   );
 }
